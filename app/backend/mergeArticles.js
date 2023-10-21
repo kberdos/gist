@@ -22,5 +22,3 @@ const mergeArticles = async () => {
 
     return data;
 }
-
-console.log(await mergeArticles());
