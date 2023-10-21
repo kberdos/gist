@@ -22,4 +22,16 @@ export const defaultTopics: Topics = {
   health: false,
 };
 
+export const allTopics: Topics = {
+  usNews: true,
+  business: true,
+  technology: true,
+  worldNews: true,
+  science: true,
+  fashion: true,
+  sports: true,
+  art: true,
+  health: true,
+};
+
 export type PageTypes = "home" | "select" | "view";

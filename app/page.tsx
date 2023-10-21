@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { PageTypes, Topics, defaultTopics } from '@/types'
+import { PageTypes, Topics, defaultTopics, allTopics } from '@/types'
 import { TopicBubbles } from '@/components/TopicBubbles'
 
 interface CheckBoxProps {
@@ -49,8 +49,8 @@ const TopicSelector = ({ selectedTopics, setSelectedTopics, homePageType, setHom
   }
   return (
     <div>
-      {homePageType == 'select' ? (<div className="bg-nord-3 min-w-[200px] text-nord-4 mx-[350px] mt-0">
-        <div className="text-left gap-7  flex flex-col lg:grid lg:grid-cols-3 bg-nord-3 lg:pl-[80px] pl-[40px] py-8 ">
+      {homePageType == 'select' ? (<div className="bg-nord-3 min-w-[200px]  pt-9 pb-4  flex flex-col gap-8 justify-center text-nord-4 mx-[350px] mt-0 rounded-lg">
+        <div className="text-left gap-7 flex flex-col lg:grid lg:grid-cols-3 lg:pl-[80px] pl-[40px]">
           <CheckBox
             label="U.S. News"
             id="0"
@@ -106,8 +106,22 @@ const TopicSelector = ({ selectedTopics, setSelectedTopics, homePageType, setHom
             checked={selectedTopics.health}
           />
         </div>
-        <div className="text-center" onClick={subimtPreferences}>
-          <button className="bg-nord-1 hover:bg-nord-2 rounded py-2 px-4 mb-2">Generate</button>
+        <div className="flex flex-row gap-10 justify-center">
+          <div className="text-center">
+            <button
+              onClick={() => { setSelectedTopics(allTopics) }}
+              className="w-[150px] bg-nord-1 hover:bg-nord-2 rounded py-2 px-4 mb-2 ">Select All</button>
+          </div>
+          <div className="text-center">
+            <button
+              onClick={subimtPreferences}
+              className="w-[150px] bg-nord-1 hover:bg-nord-2 rounded py-2 px-4 mb-2 ">Generate</button>
+          </div>
+          <div className="text-center">
+            <button
+              onClick={() => setSelectedTopics(defaultTopics)}
+              className="w-[150px] bg-nord-1 hover:bg-nord-2 rounded py-2 px-4 mb-2 ">Clear</button>
+          </div>
         </div>
       </div >) : <></>}
       {homePageType == 'view' ? (<div className="bg-nord-3 min-w-[200px] text-nord-4 mx-[350px] mt-0"></div>) : <></>}
@@ -174,7 +188,7 @@ export default function Home() {
     <div className="bg-nord-0 min-h-[100vh]">
       {homePageType !== 'home' && (
         <div className="bg-nord-1">
-          <p className="text-nord-6 text-4xl py-4 px-5 ">Gist</p>
+          <p onClick={() => setHomePageType('home')} className="cursor-pointer max-w-fit text-nord-6 text-4xl py-4 px-5 ">Gist</p>
         </div>)}
       {homePageType === 'home' && (<div className="pt-[100px] text-nord-6 text-7xl text-center">Gist</div>)}
       <div className="flex flex-col">
