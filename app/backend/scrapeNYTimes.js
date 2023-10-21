@@ -50,18 +50,12 @@ const scrapeNYTimes = async () => {
     let promises = [
         scrapeCategory("world"),
         scrapeCategory("us"),
-        scrapeCategory("politics"),
         scrapeCategory("science"),
         scrapeCategory("sports"),
         scrapeCategory("health"),
-        scrapeCategory("nyregion"),
         scrapeCategory("business"),
-        scrapeCategory("opinion"),
         scrapeCategory("arts"),
-        scrapeCategory("books"),
         scrapeCategory("style"),
-        scrapeCategory("food"),
-        scrapeCategory("travel")
     ];
 
     let articles = await Promise.all(promises);
@@ -69,18 +63,12 @@ const scrapeNYTimes = async () => {
     let data = {
         world: articles[0],
         us: articles[1],
-        politics: articles[2],
-        science: articles[3],
-        sports: articles[4],
-        health: articles[5],
-        ny: articles[6],
-        business: articles[7],
-        opinion: articles[8],
-        arts: articles[9],
-        books: articles[10],
-        lifestyle: articles[11],
-        food: articles[12],
-        travel: articles[13],
+        science: articles[2],
+        sports: articles[3],
+        health: articles[4],
+        business: articles[5],
+        arts: articles[6],
+        lifestyle: articles[7],
     };
 
     return data;

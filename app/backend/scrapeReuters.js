@@ -52,7 +52,6 @@ const scrapeReuters = async () => {
         scrapeCategory("world/us"),
         scrapeCategory("business"),
         scrapeCategory("business/healthcare-pharmaceuticals/"),
-        scrapeCategory("sustainability"),
         scrapeCategory("technology"),
         scrapeCategory("science"),
         scrapeCategory("lifestyle"),
@@ -66,11 +65,10 @@ const scrapeReuters = async () => {
         us: articles[1],
         business: articles[2],
         health: articles[3],
-        sustainability: articles[4],
-        technology: articles[5],
-        science: articles[6],
-        lifestyle: articles[7],
-        sports: articles[8],
+        technology: articles[4],
+        science: articles[5],
+        lifestyle: articles[6],
+        sports: articles[7],
     };
 
     return data;
