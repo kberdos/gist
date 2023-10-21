@@ -6,19 +6,16 @@ const scrapeCategory = async (category) => {
     const html = await axios.get(url);
     const $ = await cheerio.load(html.data);
 
-    let articles = [];
-    
     // scrape article titles and urls
     const elements = $("li.story-collection__story__LeZ29");
-    let promises = [];
 
+    let promises = [];
     for (let i = 0; i < elements.length; i++) {
         promises.push(scrapeArticle(elements[i], $));
     }
 
-    articles = await Promise.all(promises);
-
-    return articles;
+    const articles = await Promise.all(promises);
+    return articles.filter(article => article !== null);
 }
 
 const scrapeArticle = async (element, $) => {
@@ -50,12 +47,19 @@ const scrapeArticle = async (element, $) => {
 }
 
 const scrapeReuters = async () => {
+    let promises = [
+        scrapeCategory("world"),
+        scrapeCategory("business"),
+    ];
+
+    let articles = await Promise.all(promises);
+
     let data = {
-        world: await scrapeCategory("world"),
-        business: await scrapeCategory("business"),
+        world: articles[0],
+        business: articles[1],
     };
 
     return data;
 }
 
-console.log(await scrapeReuters());
+export default scrapeReuters;
