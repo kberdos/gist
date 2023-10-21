@@ -1,9 +1,9 @@
 import { ScrapedData, Article } from "./types";
 
 export const articleOne: Article = {
-  title: "PENIS!!",
+  title: "One",
   summary:
-    "Voluptate velit non non tempor. Est Lorem ea ipsum deserunt et non laboris eiusmod ex. In ut commodo veniam commodo nostrud. Minim anim anim ex incididunt in dolor id in culpa exercitation consequat nisi sint excepteur.",
+    "Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. akthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs.",
   url: "https://PENIS.COM",
   source: "I MADE THAT SHIT UP",
   imageUrl:
@@ -11,7 +11,7 @@ export const articleOne: Article = {
 };
 
 export const articleTwo: Article = {
-  title: "random",
+  title: "Two",
   summary: "blah blah blah",
   url: "https://random.com",
   source: "me",
@@ -20,7 +20,7 @@ export const articleTwo: Article = {
 };
 
 export const articleThree: Article = {
-  title: "hehe",
+  title: "Three",
   summary: "hehehehehe",
   url: "https://hehe.com",
   source: "funny",

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { PageTypes, Topics, defaultTopics, allTopics } from '@/types'
 import { TopicBubbles } from '@/components/TopicBubbles'
+import { TopicArticles } from '@/components/TopicArticles'
 
 
 function topicsToArr(selectedTopics: Topics): string[] {
@@ -167,6 +168,26 @@ interface TopicDisplayProps {
   homePageType: PageTypes
   selectedTopics: Topics
 }
+
+const ArticlesDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
+  const [topics, setTopics] = useState<string[]>([])
+
+  useEffect(() => {
+    setTopics(topicsToArr(selectedTopics))
+  }
+    , [selectedTopics])
+
+  return (
+    homePageType == 'view' ?
+      (
+        topics.map((topic, index) => {
+          return (<div key={index}>
+            <TopicArticles topic={topic} />
+          </div>)
+        })
+      ) : <></>)
+}
+
 const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
   const [topics, setTopics] = useState<string[]>([])
 
@@ -178,9 +199,9 @@ const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
     homePageType == 'view' && (
       <div className="mt-4 mx-[250px] justify-center flex flex-row flex-wrap gap-6">
         {topics.map((topic, index) => {
-          return <div key={index}>
-            <TopicBubbles topic={topic}></TopicBubbles>
-          </div>
+          return (<div key={index}>
+            <TopicBubbles topic={topic} />
+          </div>)
         })}
       </div>
     )
@@ -226,7 +247,12 @@ export default function Home() {
       />
       <TopicDisplay
         homePageType={homePageType}
-        selectedTopics={selectedTopics} />
+        selectedTopics={selectedTopics}
+      />
+      <ArticlesDisplay
+        homePageType={homePageType}
+        selectedTopics={selectedTopics}
+      />
     </div>
   );
 }
