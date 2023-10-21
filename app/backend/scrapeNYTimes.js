@@ -86,6 +86,4 @@ const scrapeNYTimes = async () => {
     return data;
 }
 
-console.log(await scrapeNYTimes());
-
 export default scrapeNYTimes;
