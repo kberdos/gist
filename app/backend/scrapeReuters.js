@@ -10,40 +10,52 @@ const scrapeCategory = async (category) => {
     
     // scrape article titles and urls
     const elements = $("li.story-collection__story__LeZ29");
+    let promises = [];
 
     for (let i = 0; i < elements.length; i++) {
-        try {
-            // extract article title and url
-            let items = {
-                title: $(elements[i]).find("h3").find("a").text(),
-                summary: "",
-                url: $(elements[i]).find("h3").find("a").attr("href"),
-                source: "Reuters"
-            };
-
-            // update summary field
-            items.summary = await scrapeArticle(`https://www.reuters.com${items.url}`);
-        
-            articles.push(items);
-        } catch (err) {
-            continue;
-        }
+        promises.push(scrapeArticle(elements[i], $));
     }
+
+    articles = await Promise.all(promises);
 
     return articles;
 }
 
-const scrapeArticle = async (url) => {
-    const html = await axios.get(url);
-    const $ = await cheerio.load(html.data);
+const scrapeArticle = async (element, $) => {
+    try {
+        // extract article title and url
+        let articleData = {
+            title: $(element).find("h3").find("a").text(),
+            summary: "",
+            url: $(element).find("h3").find("a").attr("href"),
+            source: "Reuters"
+        };
 
-    let articleText = [];
+        // update summary field
+        const html = await axios.get(`https://www.reuters.com${articleData.url}`);
+        const $$ = await cheerio.load(html.data);
 
-    $("p.text__text__1FZLe").each((i, element) => {
-        articleText.push($(element).text());
-    });
+        let articleText = [];
 
-    return articleText.join(" ");
+        $$("p.text__text__1FZLe").each((i, element) => {
+            articleText.push($$(element).text());
+        });
+
+        articleData.summary = articleText.join(" ");
+        
+        return articleData;
+    } catch (err) {
+        return null;
+    }
 }
 
-console.log(await scrapeCategory("world"));
+const scrapeReuters = async () => {
+    let data = {
+        world: await scrapeCategory("world"),
+        business: await scrapeCategory("business"),
+    };
+
+    return data;
+}
+
+console.log(await scrapeReuters());
