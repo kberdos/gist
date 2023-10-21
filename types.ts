@@ -21,3 +21,5 @@ export const defaultTopics: Topics = {
   art: false,
   health: false,
 };
+
+export type PageTypes = "home" | "select" | "view";
