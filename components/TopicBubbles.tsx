@@ -3,6 +3,6 @@ interface TopicBubblesProps {
 }
 export const TopicBubbles = ({ topic }: TopicBubblesProps) => {
     return (
-        <div className="box-border rounded-lg opacity-100 px-4 py-2 bg-nord-6">{topic}</div>
+        <div className="text-center box-border rounded-full opacity-100 w-[150px] px-4 py-2 bg-nord-6">{topic}</div>
     )
 }

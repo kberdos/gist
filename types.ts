@@ -34,4 +34,6 @@ export const allTopics: Topics = {
   health: true,
 };
 
+export interface Article {}
+
 export type PageTypes = "home" | "select" | "view";

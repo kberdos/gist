@@ -4,6 +4,40 @@ import { useState, useEffect } from 'react'
 import { PageTypes, Topics, defaultTopics, allTopics } from '@/types'
 import { TopicBubbles } from '@/components/TopicBubbles'
 
+
+function topicsToArr(selectedTopics: Topics): string[] {
+  let tempTopics = []
+  if (selectedTopics.usNews) {
+    tempTopics.push('U.S. News')
+  }
+  if (selectedTopics.business) {
+    tempTopics.push('Business')
+  }
+  if (selectedTopics.technology) {
+    tempTopics.push('Technology')
+  }
+  if (selectedTopics.worldNews) {
+    tempTopics.push('World News')
+  }
+  if (selectedTopics.science) {
+    tempTopics.push('Science')
+  }
+  if (selectedTopics.fashion) {
+    tempTopics.push('Fashion')
+  }
+  if (selectedTopics.sports) {
+    tempTopics.push('Sports')
+  }
+  if (selectedTopics.art) {
+    tempTopics.push('Art')
+  }
+  if (selectedTopics.health) {
+    tempTopics.push('Health')
+  }
+  return tempTopics
+}
+
+
 interface CheckBoxProps {
   label: string
   id: string
@@ -137,40 +171,12 @@ const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
   const [topics, setTopics] = useState<string[]>([])
 
   useEffect(() => {
-    let tempTypes = []
-    if (selectedTopics.usNews) {
-      tempTypes.push('U.S. News')
-    }
-    if (selectedTopics.business) {
-      tempTypes.push('Business')
-    }
-    if (selectedTopics.technology) {
-      tempTypes.push('Technology')
-    }
-    if (selectedTopics.worldNews) {
-      tempTypes.push('World News')
-    }
-    if (selectedTopics.science) {
-      tempTypes.push('Science')
-    }
-    if (selectedTopics.fashion) {
-      tempTypes.push('Fashion')
-    }
-    if (selectedTopics.sports) {
-      tempTypes.push('Sports')
-    }
-    if (selectedTopics.art) {
-      tempTypes.push('Art')
-    }
-    if (selectedTopics.health) {
-      tempTypes.push('Health')
-    }
-    setTopics(tempTypes)
+    setTopics(topicsToArr(selectedTopics))
   }, [selectedTopics])
 
   return (
     homePageType == 'view' && (
-      <div className="mt-4 justify-center flex flex-row gap-10">
+      <div className="mt-4 mx-[250px] justify-center flex flex-row flex-wrap gap-6">
         {topics.map((topic, index) => {
           return <div key={index}>
             <TopicBubbles topic={topic}></TopicBubbles>
@@ -211,7 +217,6 @@ export default function Home() {
           className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center ">Give me the gist about...</div>
         <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent">
         </div>
-        <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-white border-b-[30px] border-b-transparent"></div>
       </div>
       <TopicSelector
         selectedTopics={selectedTopics}
