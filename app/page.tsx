@@ -181,7 +181,7 @@ interface TopicDisplayProps {
 
 const ArticlesDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
   const [topics, setTopics] = useState<string[]>([])
-  const [loading, setLoading] = useState<boolean>(true)
+  const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setTopics(topicsToArr(selectedTopics))
@@ -228,9 +228,9 @@ export default function Home() {
     <div className="bg-nord-0 min-h-[100vh]">
       {homePageType !== 'home' && (
         <div className="bg-nord-1">
-          <p onClick={() => setHomePageType('home')} className="cursor-pointer max-w-fit text-nord-6 text-4xl py-4 px-5 ">Gist</p>
+          <p onClick={() => setHomePageType('home')} className="font-bold cursor-pointer max-w-fit text-nord-6 text-4xl py-4 px-5 ">Gist</p>
         </div>)}
-      {homePageType === 'home' && (<div className="pt-[100px] text-nord-6 text-7xl text-center">Gist</div>)}
+      {homePageType === 'home' && (<div className="pt-[100px] font-bold text-nord-6 text-7xl text-center">Gist</div>)}
       <div className="flex flex-col">
         <div
           onClick={() => {
@@ -247,7 +247,7 @@ export default function Home() {
             }
           }
           }
-          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center ">Give me the gist about...</div>
+          className="font-medium bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 text-center ">Give me the gist about...</div>
         <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent">
         </div>
       </div>
