@@ -16,7 +16,11 @@ const scrapeCategory = async (category) => {
     }
 
     const articles = await Promise.all(promises);
-    return articles.filter(article => article !== null);
+
+    return  {
+        articles: articles.filter(article => article !== null), 
+        category: category,
+    };
 }
 
 const scrapeArticle = async (element, $) => {
@@ -61,14 +65,15 @@ const scrapeReuters = async () => {
     let articles = await Promise.all(promises);
 
     let data = {
-        world: articles[0],
-        us: articles[1],
-        business: articles[2],
-        health: articles[3],
-        technology: articles[4],
-        science: articles[5],
-        lifestyle: articles[6],
-        sports: articles[7],
+        // Needs to be fixed
+        // world: articles[0],
+        // us: articles[1],
+        // business: articles[2],
+        // health: articles[3],
+        // technology: articles[4],
+        // science: articles[5],
+        // lifestyle: articles[6],
+        // sports: articles[7],
     };
 
     return data;
