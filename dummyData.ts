@@ -42,8 +42,8 @@ export const scrapeDataOne: ScrapedData = {
   ],
   worldNews: [articleThree],
   science: [articleOne],
-  fashion: [articleOne, articleTwo],
+  lifestyle: [articleOne, articleTwo],
   sports: [],
-  art: [articleOne, articleThree],
+  arts: [articleOne, articleThree],
   health: [articleOne, articleOne, articleOne],
 };
