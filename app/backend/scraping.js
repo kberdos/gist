@@ -12,6 +12,7 @@ const scraper = async () => {
         articles.push({
             title: $(element).find("h3").text(),
             summary: $(element).find("p").text(),
+            url: $(element).find("a").attr("href"),
         })
     });
 
