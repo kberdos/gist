@@ -23,14 +23,14 @@ export const TopicArticles = ({ topic }: TopicArticleProps) => {
     else if (topic === "Science") {
         articlesArr = scrapedData.science;
     }
-    else if (topic === "Art") {
-        articlesArr = scrapedData.art;
+    else if (topic === "Arts") {
+        articlesArr = scrapedData.arts;
     }
     else if (topic === "Technology") {
         articlesArr = scrapedData.technology;
     }
-    else if (topic === "Fashion") {
-        articlesArr = scrapedData.fashion;
+    else if (topic === "Lifestyle") {
+        articlesArr = scrapedData.lifestyle;
     }
     else if (topic === "Health") {
         articlesArr = scrapedData.health;

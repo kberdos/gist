@@ -4,9 +4,9 @@ export interface ScrapedData {
   technology: Article[];
   worldNews: Article[];
   science: Article[];
-  fashion: Article[];
+  lifestyle: Article[];
   sports: Article[];
-  art: Article[];
+  arts: Article[];
   health: Article[];
 }
 
@@ -24,9 +24,9 @@ export interface Topics {
   technology: boolean;
   worldNews: boolean;
   science: boolean;
-  fashion: boolean;
+  lifestyle: boolean;
   sports: boolean;
-  art: boolean;
+  arts: boolean;
   health: boolean;
 }
 
@@ -36,9 +36,9 @@ export const defaultTopics: Topics = {
   technology: false,
   worldNews: false,
   science: false,
-  fashion: false,
+  lifestyle: false,
   sports: false,
-  art: false,
+  arts: false,
   health: false,
 };
 
@@ -48,9 +48,9 @@ export const allTopics: Topics = {
   technology: true,
   worldNews: true,
   science: true,
-  fashion: true,
+  lifestyle: true,
   sports: true,
-  art: true,
+  arts: true,
   health: true,
 };
 

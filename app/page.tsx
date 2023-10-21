@@ -23,14 +23,14 @@ function topicsToArr(selectedTopics: Topics): string[] {
   if (selectedTopics.science) {
     tempTopics.push('Science')
   }
-  if (selectedTopics.fashion) {
-    tempTopics.push('Fashion')
+  if (selectedTopics.lifestyle) {
+    tempTopics.push('Lifestyle')
   }
   if (selectedTopics.sports) {
     tempTopics.push('Sports')
   }
-  if (selectedTopics.art) {
-    tempTopics.push('Art')
+  if (selectedTopics.arts) {
+    tempTopics.push('Arts')
   }
   if (selectedTopics.health) {
     tempTopics.push('Health')
@@ -118,10 +118,10 @@ const TopicSelector = ({ selectedTopics, setSelectedTopics, homePageType, setHom
             checked={selectedTopics.science}
           />
           <CheckBox
-            label="Fashion"
+            label="Lifestyle"
             id="5"
-            setAction={(b) => { setSelectedTopics({ ...selectedTopics, fashion: b }) }}
-            checked={selectedTopics.fashion}
+            setAction={(b) => { setSelectedTopics({ ...selectedTopics, lifestyle: b }) }}
+            checked={selectedTopics.lifestyle}
           />
           <CheckBox
             label="Sports"
@@ -130,10 +130,10 @@ const TopicSelector = ({ selectedTopics, setSelectedTopics, homePageType, setHom
             checked={selectedTopics.sports}
           />
           <CheckBox
-            label="Art"
+            label="Arts"
             id="7"
-            setAction={(b) => { setSelectedTopics({ ...selectedTopics, art: b }) }}
-            checked={selectedTopics.art}
+            setAction={(b) => { setSelectedTopics({ ...selectedTopics, arts: b }) }}
+            checked={selectedTopics.arts}
           />
           <CheckBox
             label="Health"
