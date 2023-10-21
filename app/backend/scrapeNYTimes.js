@@ -78,7 +78,7 @@ const scrapeNYTimes = async () => {
         opinion: articles[8],
         arts: articles[9],
         books: articles[10],
-        style: articles[11],
+        lifestyle: articles[11],
         food: articles[12],
         travel: articles[13],
     };

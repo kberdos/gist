@@ -49,17 +49,33 @@ const scrapeArticle = async (element, $) => {
 const scrapeReuters = async () => {
     let promises = [
         scrapeCategory("world"),
+        scrapeCategory("world/us"),
         scrapeCategory("business"),
+        scrapeCategory("business/healthcare-pharmaceuticals/"),
+        scrapeCategory("sustainability"),
+        scrapeCategory("technology"),
+        scrapeCategory("science"),
+        scrapeCategory("lifestyle"),
+        scrapeCategory("sports"),
     ];
 
     let articles = await Promise.all(promises);
 
     let data = {
         world: articles[0],
-        business: articles[1],
+        us: articles[1],
+        business: articles[2],
+        health: articles[3],
+        sustainability: articles[4],
+        technology: articles[5],
+        science: articles[6],
+        lifestyle: articles[7],
+        sports: articles[8],
     };
 
     return data;
 }
+
+console.log(await scrapeReuters());
 
 export default scrapeReuters;
