@@ -1,3 +1,23 @@
+export interface ScrapedData {
+  usNews: Article[];
+  business: Article[];
+  technology: Article[];
+  worldNews: Article[];
+  science: Article[];
+  fashion: Article[];
+  sports: Article[];
+  art: Article[];
+  health: Article[];
+}
+
+export interface Article {
+  title: string;
+  summary: string;
+  url: string;
+  source: string;
+  imageUrl: string;
+}
+
 export interface Topics {
   usNews: boolean;
   business: boolean;
