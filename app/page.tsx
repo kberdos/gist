@@ -31,8 +31,9 @@ const CheckBox = ({ label, id, setAction, checked }: CheckBoxProps) => {
         htmlFor={id}>
         {label}
       </label>
-    </div>)
-}
+    </div>
+  );
+};
 
 interface TopicSelectorProps {
   selectedTopics: Topics
@@ -210,6 +211,7 @@ export default function Home() {
           className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center ">Give me the gist about...</div>
         <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent">
         </div>
+        <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-white border-b-[30px] border-b-transparent"></div>
       </div>
       <TopicSelector
         selectedTopics={selectedTopics}
@@ -221,5 +223,5 @@ export default function Home() {
         homePageType={homePageType}
         selectedTopics={selectedTopics} />
     </div>
-  )
+  );
 }
