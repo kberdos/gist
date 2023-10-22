@@ -297,15 +297,15 @@ export default function Home() {
       })
     const ReutersArticles = await reures.json()
     let data: ScrapedData = {
-      worldNews: NYTimesArticles.worldNews.concat(ReutersArticles.worldNews),
-      usNews: NYTimesArticles.usNews.concat(ReutersArticles.usNews),
-      science: NYTimesArticles.science.concat(ReutersArticles.science),
-      technology: ReutersArticles.technology,
-      business: NYTimesArticles.business.concat(ReutersArticles.business),
-      sports: NYTimesArticles.sports.concat(ReutersArticles.sports),
-      health: NYTimesArticles.health.concat(ReutersArticles.health),
-      lifestyle: NYTimesArticles.lifestyle.concat(ReutersArticles.lifestyle),
-      arts: NYTimesArticles.arts,
+      worldNews: NYTimesArticles.data.worldNews.concat(ReutersArticles.data.worldNews),
+      usNews: NYTimesArticles.data.usNews.concat(ReutersArticles.data.usNews),
+      science: NYTimesArticles.data.science.concat(ReutersArticles.data.science),
+      technology: ReutersArticles.data.technology,
+      business: NYTimesArticles.data.business.concat(ReutersArticles.data.business),
+      sports: NYTimesArticles.data.sports.concat(ReutersArticles.data.sports),
+      health: NYTimesArticles.data.health.concat(ReutersArticles.data.health),
+      lifestyle: NYTimesArticles.data.lifestyle.concat(ReutersArticles.data.lifestyle),
+      arts: NYTimesArticles.data.arts,
     };
     return data
   }
