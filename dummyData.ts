@@ -31,6 +31,7 @@ export const articleThree: Article = {
 export const scrapeDataOne: ScrapedData = {
   usNews: [articleOne],
   business: [articleOne, articleThree],
+  worldNews: [articleTwo, articleOne],
   technology: [
     articleOne,
     articleTwo,
@@ -40,7 +41,6 @@ export const scrapeDataOne: ScrapedData = {
     articleThree,
     articleOne,
   ],
-  worldNews: [articleThree],
   science: [articleOne],
   lifestyle: [articleOne, articleTwo],
   sports: [],
