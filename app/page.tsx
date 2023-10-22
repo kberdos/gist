@@ -239,14 +239,18 @@ const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
 
   return (
     homePageType == "view" && (
-      <div className="mt-4 mx-[250px] justify-center flex flex-row flex-wrap gap-6">
-        {topics.map((topic, index) => {
-          return (
-            <div key={index}>
-              <TopicBubbles topic={topic} />
-            </div>
-          );
-        })}
+      <div className=" sticky top-0 bg-nord-0 vw-100 left-0 right-0 h-auto">
+        <div className="mx-30 justify-center flex flex-row flex-wrap gap-6 p-2">
+          {topics.map((topic, index) => {
+            return (
+              <div key={index}>
+                <a href={`#${topic}`} className="cursor-pointer">
+                  <TopicBubbles topic={topic} />
+                </a>
+              </div>
+            );
+          })}
+        </div>
       </div>
     )
   );
@@ -286,11 +290,11 @@ export default function Home() {
                 break;
             }
           }}
-          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center "
+          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4 text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center "
         >
           Give me the gist about...
         </div>
-        <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent"></div>
+        <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent mb-4 "></div>
       </div>
       <TopicSelector
         selectedTopics={selectedTopics}

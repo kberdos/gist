@@ -31,7 +31,9 @@ export const TopicArticles = ({ topic }: TopicArticleProps) => {
     articlesArr.length > 6 ? articlesArr.slice(0, 6) : articlesArr;
   return (
     <div>
-      <div className="text-xl text-nord-6 mx-16">{topic}</div>
+      <div className="text-xl text-nord-6 mx-16" id={topic}>
+        {topic}
+      </div>
       <div className="flex justify-center">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-8 gap-8">
           {firstSix.map((article: Article, i: number) => {
