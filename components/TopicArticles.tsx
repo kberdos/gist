@@ -29,7 +29,8 @@ export const TopicArticles = ({ topic, scrapedData }: TopicArticleProps) => {
     articlesArr = scrapedData.health;
   }
   const firstSix: Article[] =
-    articlesArr.length > 6 ? articlesArr.slice(0, 6) : articlesArr;
+    // pick 6 random elements from articlesArr
+    articlesArr.length > 6 ? articlesArr.sort(() => Math.random() - Math.random()).slice(0, 6) : articlesArr;
   return (
     <div>
       <div className="text-xl text-nord-6 mx-16" id={topic}>
@@ -44,7 +45,7 @@ export const TopicArticles = ({ topic, scrapedData }: TopicArticleProps) => {
                 summary={article.summary}
                 article={article.article}
                 article_url={article.url ? article.url : ""}
-                image_url={article.imageUrl}
+                image_url={article.imageUrl ? article.imageUrl : ""}
                 source={article.source}
               />
             );

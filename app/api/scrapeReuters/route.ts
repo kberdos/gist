@@ -27,6 +27,7 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
     let articleData = {
       title: $(element).find("h3").find("a").text(),
       article: "",
+      imageUrl: $(element).find("img").attr("src"),
       summary: "",
       url: $(element).find("h3").find("a").attr("href"),
       source: "Reuters",
