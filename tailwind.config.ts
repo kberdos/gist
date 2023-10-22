@@ -11,8 +11,8 @@ const config: Config = {
       screens: {
         lg: "1150px",
         // => @media (min-width: 1150px) { ... }
-        md: "900px",
-        // => @media (min-width: 900px) { ... }
+        md: "950px",
+        // => @media (min-width: 950px) { ... }
       },
       colors: {
         "nord-0": "#2e3440",

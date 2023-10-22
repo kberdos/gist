@@ -86,8 +86,8 @@ const TopicSelector = ({
   return (
     <div>
       {homePageType == "select" ? (
-        <div className="bg-nord-3 min-w-[200px] pt-9 pb-4 flex flex-col gap-8 justify-center text-nord-4 lg:mx-[350px] md:mx-[250px] sm:mx-[150px] mx-[100px] mt-0 rounded-lg">
-          <div className="text-left gap-7 flex flex-col lg:grid lg:grid-cols-3 lg:pl-[100px] md:grid md:grid-cols-2 md:px-[50px] sm:px-[75px] px-[150px]">
+        <div className="bg-nord-3 min-w-[200px] pt-9 pb-4 flex flex-col gap-8 justify-center text-nord-4 lg:mx-[350px] md:mx-[300px] sm:mx-[150px] mx-[100px] mt-0 rounded-lg">
+          <div className="text-left gap-7 flex flex-col lg:grid lg:grid-cols-3 lg:pl-[100px] md:grid md:grid-cols-2 md:px-[50px] sm:px-[75px] px-[75px]">
             <CheckBox
               label="U.S. News"
               id="0"
@@ -286,11 +286,11 @@ export default function Home() {
                 break;
             }
           }}
-          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4  text-nord-1 text-2xl mx-[250px] px-10 font-normal text-center "
+          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4 text-nord-1 text-2xl lg:mx-[250px] md:mx-[150px] mx-[100px] px-10 font-bold text-center text-lg sm:text-2xl"
         >
           Give me the gist about...
         </div>
-        <div className="ml-auto mr-[285px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent"></div>
+        <div className="ml-auto lg:mr-[285px] md:mr-[185px] w-0 h-0 border-t-transparent border-r-[50px] border-r-nord-6 border-b-[30px] border-b-transparent invisible md:visible"></div>
       </div>
       <TopicSelector
         selectedTopics={selectedTopics}
