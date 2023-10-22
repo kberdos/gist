@@ -45,6 +45,7 @@ export const ArticleComponent = ({
         <Image
           src={defaultImage}
           alt="default image"
+          className="rounded-t-lg w-full h-48 object-cover"
         />
       )}
 
