@@ -315,14 +315,14 @@ export default function Home() {
         <div className="bg-nord-1">
           <p
             onClick={() => setHomePageType("home")}
-            className="cursor-pointer max-w-fit text-nord-6 text-4xl py-4 px-5 "
+            className="cursor-pointer font-medium max-w-fit text-nord-6 text-4xl py-4 px-5 "
           >
             Gist
           </p>
         </div>
       )}
       {homePageType === "home" && (
-        <div className="pt-[100px] text-nord-6 text-7xl text-center">Gist</div>
+        <div className="pt-[100px] font-medium text-nord-6 text-7xl text-center">Gist</div>
       )}
       <div className="flex flex-col">
         <div
