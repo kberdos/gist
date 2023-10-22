@@ -1,13 +1,13 @@
 import { ArticleComponent } from '@/components/ArticleComponent'
 import { scrapeDataOne } from '@/dummyData';
-import { Article } from '@/types';
+import { Article, ScrapedData } from '@/types';
 // import mergeArticles from "@/app/api/mergeArticles/route"
 interface TopicArticleProps {
   topic: string;
+  scrapedData: ScrapedData
 }
 
-export const TopicArticles = ({ topic }: TopicArticleProps) => {
-  const scrapedData = scrapeDataOne;
+export const TopicArticles = ({ topic, scrapedData }: TopicArticleProps) => {
   let articlesArr: Article[] = [];
   if (topic === "U.S. News") {
     articlesArr = scrapedData.usNews;

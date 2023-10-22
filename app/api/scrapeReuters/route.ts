@@ -38,6 +38,10 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
 
     let articleText: string[] = [];
     $$("p.text__text__1FZLe").each((i, element) => {
+      // let text = $$(element).text();
+      // if (text.length > 300) {
+      //   text = text.substring(0, 300);
+      // }
       articleText.push($$(element).text());
     });
 
@@ -63,8 +67,8 @@ export const scrapeReuters = async () => {
   let articles = await Promise.all(promises);
 
   let data = {
-    world: articles[0],
-    us: articles[1],
+    worldNews: articles[0],
+    usNews: articles[1],
     business: articles[2],
     health: articles[3],
     technology: articles[4],

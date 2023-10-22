@@ -2,7 +2,7 @@ import axios from "axios";
 import cheerio from "cheerio";
 import { CheerioAPI, Element } from "cheerio";
 import { Article } from "@/types";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const scrapeCategory = async (category: string): Promise<Article[]> => {
   const url = `https://www.nytimes.com/section/${category}`;
@@ -78,8 +78,9 @@ export const scrapeNYTimes = async () => {
   let articles = await Promise.all(promises);
 
   let data = {
-    world: articles[0],
-    us: articles[1],
+    worldNews: articles[0],
+    usNews: articles[1],
+    technology: [],
     science: articles[2],
     sports: articles[3],
     health: articles[4],
@@ -91,6 +92,6 @@ export const scrapeNYTimes = async () => {
   return data;
 };
 
-export async function POST(request: any) {
+export async function POST(request: NextRequest) {
   return NextResponse.json({ data: await scrapeNYTimes() }, { status: 200 });
 }

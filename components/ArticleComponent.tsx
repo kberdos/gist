@@ -18,12 +18,13 @@ export const ArticleComponent = ({
   source,
 }: ArticleComponentProps) => {
   const [shortSummary, setShortSummary] = useState<string>("");
+  const rephrasedSummary = summary ? summary : article
   const summaryLimit = 300;
   useEffect(() => {
-    if (summary.length > summaryLimit) {
-      setShortSummary(summary.slice(0, summaryLimit) + "...");
+    if (rephrasedSummary.length > summaryLimit) {
+      setShortSummary(rephrasedSummary.slice(0, summaryLimit) + "...");
     } else {
-      setShortSummary(summary);
+      setShortSummary(rephrasedSummary);
     }
     console.log(shortSummary);
   }, [shortSummary]);

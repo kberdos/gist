@@ -216,12 +216,17 @@ const TopicSelector = ({
 interface TopicDisplayProps {
   homePageType: PageTypes
   selectedTopics: Topics
-  loading?: boolean
 }
 
-const ArticlesDisplay = ({ homePageType, selectedTopics, loading }: TopicDisplayProps) => {
+interface ArticlesDisplayProps {
+  homePageType: PageTypes
+  selectedTopics: Topics
+  loading: boolean
+  scrapedData: ScrapedData
+}
+
+const ArticlesDisplay = ({ homePageType, selectedTopics, loading, scrapedData }: ArticlesDisplayProps) => {
   const [topics, setTopics] = useState<string[]>([])
-  // const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setTopics(topicsToArr(selectedTopics));
@@ -233,7 +238,7 @@ const ArticlesDisplay = ({ homePageType, selectedTopics, loading }: TopicDisplay
         (
           topics.map((topic, index) => {
             return (<div key={index}>
-              <TopicArticles topic={topic} />
+              <TopicArticles topic={topic} scrapedData={scrapedData} />
             </div>)
           })
         ) : <></>)
@@ -268,12 +273,12 @@ const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
 export default function Home() {
   const [selectedTopics, setSelectedTopics] = useState<Topics>(defaultTopics)
   const [homePageType, setHomePageType] = useState<PageTypes>('home')
-  const [loading, setLoading] = useState<boolean>(false)
-  const [scrapedData, setScrapedData] = useState<any>(emptyScrapedData)
+  const [loading, setLoading] = useState<boolean>(true)
+  const [scrapedData, setScrapedData] = useState<ScrapedData>(emptyScrapedData)
 
   const getData = async () => {
     console.log("starting")
-    const data = await fetch('/api/scrapeReuters/',
+    const data = await fetch('/api/scrapeNYTimes/',
       {
         method: 'POST',
         headers: {
@@ -292,13 +297,17 @@ export default function Home() {
         return data.json();
       })
       .then((parsedData) => {
-        console.log(parsedData.data);
-        // You can use the parsed data here
+        setScrapedData(parsedData.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error('Error fetching and parsing data:', error);
       });
   }, []);
+
+  useEffect(() => {
+    console.log(scrapedData)
+  }, [scrapedData])
 
   return (
     <div className="bg-nord-0 min-h-[100vh]">
@@ -330,7 +339,7 @@ export default function Home() {
                 break;
             }
           }}
-          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4 text-nord-1 text-2xl lg:mx-[250px] md:mx-[150px] mx-[100px] px-10 font-bold text-center text-lg sm:text-2xl"
+          className="bg-nord-6 cursor-pointer rounded-full mt-8 py-4 text-nord-1 text-2xl lg:mx-[250px] md:mx-[150px] mx-[100px] px-10 font-medium text-center text-lg sm:text-2xl"
         >
           Give me the gist about...
         </div>
@@ -352,6 +361,7 @@ export default function Home() {
         homePageType={homePageType}
         selectedTopics={selectedTopics}
         loading={loading}
+        scrapedData={scrapedData}
       />
     </div>
   );
