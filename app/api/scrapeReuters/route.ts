@@ -17,7 +17,7 @@ const scrapeCategory = async (category: string) => {
     promises.push(scrapeArticle(elements[i], $));
   }
 
-  const articles = await Promise.allSettled(promises);
+  const articles = await Promise.all(promises);
   return articles.filter((article) => article !== null);
 };
 
@@ -64,7 +64,7 @@ const scrapeReuters = async () => {
     scrapeCategory("sports"),
   ];
 
-  let articles = await Promise.allSettled(promises);
+  let articles = await Promise.all(promises);
 
   let data = {
     worldNews: articles[0],
