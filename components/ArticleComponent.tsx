@@ -9,6 +9,8 @@ interface ArticleComponentProps {
   source: string;
 }
 
+const nytimesUrl = "https://www.nytimes.com/";
+
 export const ArticleComponent = ({
   title,
   summary,
@@ -38,7 +40,7 @@ export const ArticleComponent = ({
 
       <div className="flex flex-col p-4 text-nord-6">
         <div className="text-xl mt-1 hover:underline">
-          <a href={article_url}>{title}</a>
+          <a href={nytimesUrl + article_url}>{title}</a>
         </div>
         <p className="text-sm mt-1">{shortSummary}</p>
       </div>
