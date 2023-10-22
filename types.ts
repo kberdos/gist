@@ -28,7 +28,7 @@ export interface Article {
   article: string;
   url: string | undefined;
   source: string;
-  imageUrl: string;
+  imageUrl: string | undefined;
 }
 
 export interface Topics {

@@ -1,5 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+
+import defaultImage from "@/public/default_news.png";
 interface ArticleComponentProps {
   title: string;
   summary: string;
@@ -8,6 +11,8 @@ interface ArticleComponentProps {
   article_url: string;
   source: string;
 }
+
+const nytimesUrl = "https://www.nytimes.com/";
 
 export const ArticleComponent = ({
   title,
@@ -31,14 +36,22 @@ export const ArticleComponent = ({
 
   return (
     <div className="rounded-xl shadow-xl bg-nord-1">
-      <img
-        src={image_url}
-        className="rounded-t-lg w-full h-48 object-cover"
-      ></img>
+      {image_url ? (
+        <img
+          src={image_url}
+          className="rounded-t-lg w-full h-48 object-cover"
+        ></img>
+      ) : (
+        <Image
+          src={defaultImage}
+          alt="default image"
+          className="rounded-t-lg w-full h-48 object-cover"
+        />
+      )}
 
       <div className="flex flex-col p-4 text-nord-6">
         <div className="text-xl mt-1 hover:underline">
-          <a href={article_url}>{title}</a>
+          <a href={nytimesUrl + article_url}>{title}</a>
         </div>
         <p className="text-sm mt-1">{shortSummary}</p>
       </div>

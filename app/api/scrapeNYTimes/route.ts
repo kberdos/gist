@@ -38,7 +38,9 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
     let articleData: Article = {
       title: $(element).find("h3").text() ? $(element).find("h3").text() : "",
       article: "",
-      imageUrl: "",
+      imageUrl: $(element).find("img.css-rq4mmj").attr("src")
+        ? $(element).find("img.css-rq4mmj").attr("src")
+        : "",
       summary: $(element).find("p").text() ? $(element).find("p").text() : "",
       url:
         $(element).find("a").attr("href") !== undefined
@@ -47,6 +49,7 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
       source: "New York Times",
     };
 
+    console.log(`https://www.nytimes.com${articleData.url}`);
     // update article field (commented out because it is not working yet)
     // const html = await axios.get(`https://www.nytimes.com${articleData.url}`);
     // const $$ = await cheerio.load(html.data);
@@ -80,7 +83,6 @@ const scrapeNYTimes = async () => {
   let data = {
     worldNews: articles[0],
     usNews: articles[1],
-    technology: [],
     science: articles[2],
     sports: articles[3],
     health: articles[4],
