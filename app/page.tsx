@@ -297,8 +297,8 @@ export default function Home() {
       })
     const ReutersArticles = await reures.json()
     let data: ScrapedData = {
-      worldNews: NYTimesArticles.world.concat(ReutersArticles.worldNews),
-      usNews: NYTimesArticles.us.concat(ReutersArticles.usNews),
+      worldNews: NYTimesArticles.worldNews.concat(ReutersArticles.worldNews),
+      usNews: NYTimesArticles.usNews.concat(ReutersArticles.usNews),
       science: NYTimesArticles.science.concat(ReutersArticles.science),
       technology: ReutersArticles.technology,
       business: NYTimesArticles.business.concat(ReutersArticles.business),
