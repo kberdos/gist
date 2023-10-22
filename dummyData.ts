@@ -2,6 +2,7 @@ import { ScrapedData, Article } from "./types";
 
 export const articleOne: Article = {
   title: "One",
+  article: "",
   summary:
     "Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. akthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs. Aid officials welcomed the breakthrough but warned that the supplies were barely enough to start addressing the enclave’s health needs.",
   url: "https://PENIS.COM",
@@ -12,6 +13,7 @@ export const articleOne: Article = {
 
 export const articleTwo: Article = {
   title: "Two",
+  article: "",
   summary: "blah blah blah",
   url: "https://random.com",
   source: "me",
@@ -21,6 +23,7 @@ export const articleTwo: Article = {
 
 export const articleThree: Article = {
   title: "Three",
+  article: "",
   summary: "hehehehehe",
   url: "https://hehe.com",
   source: "funny",
@@ -31,6 +34,7 @@ export const articleThree: Article = {
 export const scrapeDataOne: ScrapedData = {
   usNews: [articleOne],
   business: [articleOne, articleThree],
+  worldNews: [articleTwo, articleOne],
   technology: [
     articleOne,
     articleTwo,
@@ -40,7 +44,6 @@ export const scrapeDataOne: ScrapedData = {
     articleThree,
     articleOne,
   ],
-  worldNews: [articleThree],
   science: [articleOne],
   lifestyle: [articleOne, articleTwo],
   sports: [],

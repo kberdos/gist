@@ -8,6 +8,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        lg: "1150px",
+        // => @media (min-width: 1150px) { ... }
+        md: "950px",
+        // => @media (min-width: 950px) { ... }
+      },
       colors: {
         "nord-0": "#2e3440",
         "nord-1": "#3b4252",
