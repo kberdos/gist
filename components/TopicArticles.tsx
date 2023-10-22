@@ -42,7 +42,8 @@ export const TopicArticles = ({ topic }: TopicArticleProps) => {
               <ArticleComponent
                 title={article.title}
                 summary={article.summary}
-                article_url={article.url}
+                article={article.article}
+                article_url={article.url ? article.url : ""}
                 image_url={article.imageUrl}
                 source={article.source}
               />
