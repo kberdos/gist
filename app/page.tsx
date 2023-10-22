@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { PageTypes, Topics, defaultTopics, allTopics } from '@/types'
+import { PageTypes, Topics, defaultTopics, allTopics, ScrapedData, emptyScrapedData } from '@/types'
 import { TopicBubbles } from '@/components/TopicBubbles'
 import { TopicArticles } from '@/components/TopicArticles'
 
@@ -177,11 +177,12 @@ const TopicSelector = ({ selectedTopics, setSelectedTopics, homePageType, setHom
 interface TopicDisplayProps {
   homePageType: PageTypes
   selectedTopics: Topics
+  loading?: boolean
 }
 
-const ArticlesDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
+const ArticlesDisplay = ({ homePageType, selectedTopics, loading }: TopicDisplayProps) => {
   const [topics, setTopics] = useState<string[]>([])
-  const [loading, setLoading] = useState<boolean>(false)
+  // const [loading, setLoading] = useState<boolean>(false)
 
   useEffect(() => {
     setTopics(topicsToArr(selectedTopics))
@@ -220,9 +221,42 @@ const TopicDisplay = ({ homePageType, selectedTopics }: TopicDisplayProps) => {
   )
 }
 
+
+
 export default function Home() {
   const [selectedTopics, setSelectedTopics] = useState<Topics>(defaultTopics)
   const [homePageType, setHomePageType] = useState<PageTypes>('home')
+  const [loading, setLoading] = useState<boolean>(false)
+  const [scrapedData, setScrapedData] = useState<any>(emptyScrapedData)
+
+  const getData = async () => {
+    console.log("starting")
+    const data = await fetch('/api/scrapeReuters/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+      })
+    console.log("finished")
+    return data
+  }
+
+  useEffect(() => {
+    getData()
+      .then((data) => {
+        // Access the data from data.json() using await
+        return data.json();
+      })
+      .then((parsedData) => {
+        console.log(parsedData.data);
+        // You can use the parsed data here
+      })
+      .catch((error) => {
+        console.error('Error fetching and parsing data:', error);
+      });
+  }, []);
 
   return (
     <div className="bg-nord-0 min-h-[100vh]">
@@ -264,6 +298,7 @@ export default function Home() {
       <ArticlesDisplay
         homePageType={homePageType}
         selectedTopics={selectedTopics}
+        loading={loading}
       />
     </div>
   );

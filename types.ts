@@ -10,10 +10,23 @@ export interface ScrapedData {
   health: Article[];
 }
 
+export const emptyScrapedData = {
+  usNews: [],
+  business: [],
+  technology: [],
+  worldNews: [],
+  science: [],
+  lifestyle: [],
+  sports: [],
+  arts: [],
+  health: [],
+};
+
 export interface Article {
   title: string;
   summary: string;
-  url: string;
+  article: string;
+  url: string | undefined;
   source: string;
   imageUrl: string;
 }

@@ -1,6 +1,7 @@
 import { ArticleComponent } from '@/components/ArticleComponent'
 import { scrapeDataOne } from '@/dummyData';
 import { Article } from '@/types';
+// import mergeArticles from "@/app/api/mergeArticles/route"
 interface TopicArticleProps {
     topic: string;
 }
@@ -46,8 +47,9 @@ export const TopicArticles = ({ topic }: TopicArticleProps) => {
                             {firstSix.map((article: Article, i: number) => {
                                 return (<ArticleComponent
                                     title={article.title}
+                                    article={article.article}
                                     summary={article.summary}
-                                    article_url={article.url}
+                                    article_url={article.url ? article.url : ""}
                                     image_url={article.imageUrl}
                                     source={article.source} />)
                             })}
