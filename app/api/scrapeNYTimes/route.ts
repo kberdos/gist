@@ -49,7 +49,6 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
       source: "New York Times",
     };
 
-    console.log(`https://www.nytimes.com${articleData.url}`);
     // update article field (commented out because it is not working yet)
     // const html = await axios.get(`https://www.nytimes.com${articleData.url}`);
     // const $$ = await cheerio.load(html.data);

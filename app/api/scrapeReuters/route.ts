@@ -27,7 +27,7 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
     let articleData = {
       title: $(element).find("h3").find("a").text(),
       article: "",
-      imageUrl: $(element).find("img").attr("src"),
+      imageUrl: "",
       summary: "",
       url: $(element).find("h3").find("a").attr("href"),
       source: "Reuters",
@@ -39,12 +39,11 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
 
     let articleText: string[] = [];
     $$("p.text__text__1FZLe").each((i, element) => {
-      // let text = $$(element).text();
-      // if (text.length > 300) {
-      //   text = text.substring(0, 300);
-      // }
       articleText.push($$(element).text());
     });
+
+    //@ts-ignore
+    articleData.imageUrl = $$("div.styles__image-container__skIG1").find("img").attr("src") ? $$("div.styles__image-container__skIG1").find("img").attr("src") : "";
 
     articleData.article = articleText.join(" ");
     return articleData;
