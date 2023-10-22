@@ -1,9 +1,9 @@
-import { scrapeNYTimes } from "../scrapeNYTimes/route";
-import { scrapeReuters } from "../scrapeReuters/route";
-import { ScrapedData } from "@/types";
+// import { scrapeNYTimes } from "../scrapeNYTimes/route";
+// import { scrapeReuters } from "../scrapeReuters/route";
+// import { ScrapedData } from "@/types";
 import { NextResponse } from "next/server";
 
-export const mergeArticles = async () => {
+const mergeArticles = async () => {
   // let promises = [scrapeNYTimes(), scrapeReuters()];
   // const allArticles = Promise.all(promises);
 
