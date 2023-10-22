@@ -63,7 +63,7 @@ const scrapeArticle = async (element: Element, $: CheerioAPI) => {
   }
 };
 
-export const scrapeNYTimes = async () => {
+const scrapeNYTimes = async () => {
   let promises = [
     scrapeCategory("world"),
     scrapeCategory("us"),
