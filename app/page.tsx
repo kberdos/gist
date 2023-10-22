@@ -278,7 +278,7 @@ export default function Home() {
 
   const getData = async () => {
     console.log("starting")
-    const data = await fetch('/api/scrapeNYTimes/',
+    const nytres = await fetch('/api/scrapeNYTimes/',
       {
         method: 'POST',
         headers: {
@@ -286,23 +286,47 @@ export default function Home() {
         },
         body: JSON.stringify({})
       })
-    console.log("finished")
+    const NYTimesArticles = await nytres.json()
+    const reures = await fetch('/api/scrapeReuters/',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({})
+      })
+    const ReutersArticles = await reures.json()
+    let data: ScrapedData = {
+      worldNews: NYTimesArticles.world.concat(ReutersArticles.worldNews),
+      usNews: NYTimesArticles.us.concat(ReutersArticles.usNews),
+      science: NYTimesArticles.science.concat(ReutersArticles.science),
+      technology: ReutersArticles.technology,
+      business: NYTimesArticles.business.concat(ReutersArticles.business),
+      sports: NYTimesArticles.sports.concat(ReutersArticles.sports),
+      health: NYTimesArticles.health.concat(ReutersArticles.health),
+      lifestyle: NYTimesArticles.lifestyle.concat(ReutersArticles.lifestyle),
+      arts: NYTimesArticles.arts,
+    };
     return data
   }
 
   useEffect(() => {
-    getData()
-      .then((data) => {
-        // Access the data from data.json() using await
-        return data.json();
-      })
-      .then((parsedData) => {
-        setScrapedData(parsedData.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching and parsing data:', error);
-      });
+    getData().then((data) => {
+      setScrapedData(data)
+      setLoading(false)
+    })
+    // getData()
+    //   .then((data) => {
+    //     // Access the data from data.json() using await
+    //     return data.json();
+    //   })
+    //   .then((parsedData) => {
+    //     setScrapedData(parsedData.data);
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error fetching and parsing data:', error);
+    //   });
   }, []);
 
   useEffect(() => {

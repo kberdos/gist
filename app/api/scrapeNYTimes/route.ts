@@ -80,7 +80,6 @@ const scrapeNYTimes = async () => {
   let data = {
     worldNews: articles[0],
     usNews: articles[1],
-    technology: [],
     science: articles[2],
     sports: articles[3],
     health: articles[4],
