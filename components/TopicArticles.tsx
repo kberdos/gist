@@ -1,6 +1,7 @@
-import { ArticleComponent } from "@/components/ArticleComponent";
-import { scrapeDataOne } from "@/dummyData";
-import { Article } from "@/types";
+import { ArticleComponent } from '@/components/ArticleComponent'
+import { scrapeDataOne } from '@/dummyData';
+import { Article } from '@/types';
+// import mergeArticles from "@/app/api/mergeArticles/route"
 interface TopicArticleProps {
   topic: string;
 }

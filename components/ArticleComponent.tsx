@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 interface ArticleComponentProps {
   title: string;
   summary: string;
+  article: string;
   image_url: string;
   article_url: string;
   source: string;
@@ -11,6 +12,7 @@ interface ArticleComponentProps {
 export const ArticleComponent = ({
   title,
   summary,
+  article,
   image_url,
   article_url,
   source,
