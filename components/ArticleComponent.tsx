@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { useState, useEffect } from "react";
 interface ArticleComponentProps {
   title: string;
@@ -25,26 +25,23 @@ export const ArticleComponent = ({
     } else {
       setShortSummary(summary);
     }
-    console.log(shortSummary)
-  }, [shortSummary])
+    console.log(shortSummary);
+  }, [shortSummary]);
 
   return (
-    <div className="rounded-lg h-[390px] w-[350px] bg-nord-1 mb-5">
-      <div className="rounded-lg w-100 h-40">
-        <img
-          src={image_url}
-          className="w-full h-full object-cover rounded-t-lg"
-        ></img>
-        <div className="px-3 text-nord-6">
-          <div className="font-extrabold text-xl mt-2 mb-2 hover:underline">
-            <a href={article_url}>{title}</a>
-          </div>
-          <p className="text-sm pb-3">{shortSummary}</p>
+    <div className="rounded-xl shadow-xl bg-nord-1">
+      <img
+        src={image_url}
+        className="rounded-t-lg w-full h-48 object-cover"
+      ></img>
+
+      <div className="flex flex-col p-4 text-nord-6">
+        <div className="text-xl mt-1 hover:underline">
+          <a href={article_url}>{title}</a>
         </div>
-        <div>
-          <div className="font-bold text-sm px-3 pb-3 mb-1 text-nord-6">Source: {source}</div>
-        </div>
+        <p className="text-sm mt-1">{shortSummary}</p>
       </div>
+      <div className="text-sm p-4 mr-2 text-nord-6"> Source: {source}</div>
     </div>
   );
 };
