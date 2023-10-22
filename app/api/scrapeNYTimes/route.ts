@@ -4,32 +4,23 @@ import { CheerioAPI, Element } from "cheerio";
 import { Article } from "@/types";
 import { NextRequest, NextResponse } from "next/server";
 
-const scrapeCategory = async (category: string): Promise<Article[]> => {
+const scrapeCategory = async (category: string) => {
   const url = `https://www.nytimes.com/section/${category}`;
-  try {
-    const html = await axios.get(url);
-    // Handle the response data
-    const $ = await cheerio.load(html.data);
+  const html = await axios.get(url);
+  // Handle the response data
+  const $ = await cheerio.load(html.data);
 
-    // extract article elements
-    const elements = $("li.css-18yolpw");
+  // extract article elements
+  const elements = $("li.css-18yolpw");
 
-    // asynchronously scrape each article
-    let promises = [];
-    for (let i = 0; i < elements.length; i++) {
-      const article = await scrapeArticle(elements[i], $);
-      if (article) {
-        promises.push(article);
-      }
-    }
-
-    const articles = await Promise.all(promises);
-    return articles;
-  } catch (error) {
-    console.error("Axios network error:", error);
-    return [];
-    // Handle the error here or rethrow it to handle it further
+  // asynchronously scrape each article
+  let promises = [];
+  for (let i = 0; i < elements.length; i++) {
+      promises.push(scrapeArticle(elements[i], $));
   }
+
+  const articles = await Promise.allSettled(promises);
+  return articles.filter((article) => article !== null);
 };
 
 const scrapeArticle = async (element: Element, $: CheerioAPI) => {
@@ -77,7 +68,7 @@ const scrapeNYTimes = async () => {
     scrapeCategory("style"),
   ];
 
-  let articles = await Promise.all(promises);
+  let articles = await Promise.allSettled(promises);
 
   let data = {
     worldNews: articles[0],
